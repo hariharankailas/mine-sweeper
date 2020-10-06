@@ -12,6 +12,7 @@ const MainLanding = () => {
   const [gameStatus, setGameStatus] = useState("onGoing");
   const [gameNotificationMsg, setGameNotificationMsg] = useState("");
 
+  /**Set rows and cols */
   const onInputChange = (type, value) => {
     if (value >= 0) type === "rows" ? setRowCount(value) : setColCount(value);
   };

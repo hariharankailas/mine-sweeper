@@ -13,8 +13,8 @@ const GameLanding = ({
   const startGame = () => {
     if (rowCount > 99 || colCount > 99)
       setGameNotificationMsg("Please Enter A value less than 99");
-    else if (!colCount || !rowCount)
-      setGameNotificationMsg("Please enter some value to continue");
+    else if (!colCount || !rowCount || rowCount === "0" || colCount === "0")
+      setGameNotificationMsg("Please enter a valid value to continue");
     else {
       setGameNotificationMsg("");
       history.push("/game");
@@ -62,7 +62,7 @@ const GameLanding = ({
         <div className="col-12 d-flex justify-content-center start-game-container">
           <button
             type="button"
-            class="btn btn-lg btn-outline-warning"
+            className="btn btn-lg btn-outline-warning"
             onClick={() => startGame()}
           >
             Start Game
@@ -77,6 +77,7 @@ GameLanding.propTypes = {
   rowCount: PropTypes.number.isRequired,
   history: PropTypes.object.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  setGameNotificationMsg: PropTypes.func.isRequired,
 };
 
 export default withRouter(GameLanding);

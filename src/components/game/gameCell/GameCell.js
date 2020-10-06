@@ -7,6 +7,7 @@ const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
   useEffect(() => {
     setIsRevealed(false);
   }, [resetGame]);
+  // On Click of a cell
   const cellSelected = (e) => {
     let key = e.which || e.keyCode || "click";
     // Accepts only Click and the enter Key
@@ -25,7 +26,7 @@ const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
     >
       {isRevealed || isRevealAll ? (
         cell.cellData === -1 ? (
-          <i class="fas fa-bomb"></i>
+          <i className="fas fa-bomb"></i>
         ) : (
           cell.cellData
         )
@@ -37,6 +38,7 @@ const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
 };
 GameCell.propTypes = {
   cell: PropTypes.object.isRequired,
+  resetGame: PropTypes.bool.isRequired,
   isRevealAll: PropTypes.bool.isRequired,
   updateMinefield: PropTypes.func.isRequired,
 };

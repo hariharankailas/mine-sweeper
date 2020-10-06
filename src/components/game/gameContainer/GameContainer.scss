@@ -7,12 +7,10 @@
 
     .fa-redo {
       color: var(--secondaryColor);
+      font-size: 2.5rem;
       &:hover {
         transform: rotate(180deg);
         cursor: pointer;
-      }
-      &:before {
-        font-size: 2.5rem;
       }
     }
     .timer {
@@ -30,7 +28,7 @@
   .game-container {
     margin: 3rem auto 0;
     padding-top: 1rem;
-    .fa-bomb:before {
+    .fa-bomb {
       font-size: 1.5rem;
     }
   }
@@ -47,10 +45,7 @@
       width: 100%;
       .fa-redo {
         color: var(--secondaryColor);
-
-        &:before {
-          font-size: 2rem;
-        }
+        font-size: 2rem;
       }
       .timer {
         font-size: 1rem;
@@ -62,7 +57,7 @@
     .game-container {
       margin: 3rem auto 0;
       padding-top: 1rem;
-      .fa-bomb:before {
+      .fa-bomb {
         font-size: 1.5rem;
       }
     }

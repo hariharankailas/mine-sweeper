@@ -10,11 +10,11 @@ const Notification = ({ gameNotificationMsg, setGameNotificationMsg }) => {
     }
   }, []);
   return (
-    <div class="alert alert-danger text-center" role="alert">
+    <div className="alert alert-danger text-center" role="alert">
       {gameNotificationMsg}
       <button
         type="button"
-        class="close"
+        className="close"
         data-dismiss="alert"
         aria-label="Close"
         onClick={() => setGameNotificationMsg("")}
@@ -27,6 +27,7 @@ const Notification = ({ gameNotificationMsg, setGameNotificationMsg }) => {
 
 Notification.propTypes = {
   gameNotificationMsg: PropTypes.string.isRequired,
+  setGameNotificationMsg: PropTypes.func.isRequired,
 };
 
 export default Notification;

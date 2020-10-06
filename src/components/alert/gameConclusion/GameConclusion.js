@@ -4,11 +4,10 @@ import UIfx from "uifx";
 import explosionSound from "../../../game-sounds/explosion.mp3";
 import synthSound from "../../../game-sounds/synth.mp3";
 import PropTypes from "prop-types";
-import bombIcon from "../../../icons/bomb-solid.svg";
-import checkIcon from "../../../icons/check-circle.svg";
-import closeIcon from "../../../icons/window-close.svg";
 
 const GameConclusion = ({ gameStatus, setGameStatus }) => {
+  const explosion = new UIfx(explosionSound);
+  const synth = new UIfx(synthSound);
   useEffect(() => {
     let main = document.querySelector(".fa-window-close");
     if (main !== undefined && main !== null) {
@@ -27,18 +26,17 @@ const GameConclusion = ({ gameStatus, setGameStatus }) => {
     }
   };
 
-  const explosion = new UIfx(explosionSound);
-  const synth = new UIfx(synthSound);
   return (
     <div className="game-conclusion-container">
       <div className="container-fluid">
         <div className="row close-alert-container">
-          <i
-            tabIndex="0"
-            class="fas fa-window-close"
+          <span
             onClick={(e) => closeConclusion(e)}
             onKeyDown={(e) => closeConclusion(e)}
-          ></i>
+            tabIndex="0"
+          >
+            <i className="fas fa-window-close"></i>
+          </span>
         </div>
         <h2 className="row">
           {gameStatus === "over" ? "Game Over" : "Winner"}
@@ -49,11 +47,6 @@ const GameConclusion = ({ gameStatus, setGameStatus }) => {
               gameStatus === "over" ? "fas fa-bomb" : "far fa-check-circle"
             }
           ></i>
-          {/* <img
-            className="game-status-icon"
-            src={gameStatus === "over" ? bombIcon : checkIcon}
-            alt={gameStatus === "over" ? "Game Over" : "Winner"}
-          /> */}
         </div>
       </div>
     </div>
@@ -61,7 +54,8 @@ const GameConclusion = ({ gameStatus, setGameStatus }) => {
 };
 
 GameConclusion.propTypes = {
-  gameStatus: PropTypes.string,
+  gameStatus: PropTypes.string.isRequired,
+  setGameStatus: PropTypes.func.isRequired,
 };
 
 export default GameConclusion;

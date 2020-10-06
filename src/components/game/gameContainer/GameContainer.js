@@ -66,6 +66,7 @@ const GameContainer = ({
     updatedCellList = addMineCount(cellList);
     setGameCellList(updatedCellList);
   };
+
   /**Update Mine Count on Adjacent Tiles */
   const updateNearbyMineCount = (cellList, rowIndex, colIndex) => {
     // Create Above Row List
@@ -130,8 +131,8 @@ const GameContainer = ({
 
     // Update the cellData by 1 for nearby tiles
     const mergedList = [...aboveRowList, ...currentRowList, ...belowRowList];
-    mergedList.forEach((ele) => {
-      if (ele && ele.cellData !== -1) ele.cellData += 1;
+    mergedList.forEach((cell) => {
+      if (cell && cell.cellData !== -1) cell.cellData += 1;
     });
 
     return cellList;
@@ -158,13 +159,13 @@ const GameContainer = ({
 
   /* Update Mine field */
   const updateMinefield = ({ cellData }) => {
-    console.log(`Update Mine Field ${minesArray}`);
+    //Mine
     if (cellData === -1) {
       setIsRevealAll(true);
       setGameStatus("over");
     } else {
+      //Empty Tiles
       setTileCount([...tileCount, cellData]);
-      console.log("tileCount", tileCount);
       const safeTileCount = rowCount * colCount - minesArray.length;
       if (tileCount.length === safeTileCount - 1) {
         setIsRevealAll(true);
@@ -189,12 +190,13 @@ const GameContainer = ({
       <div className="row game-container-controls">
         <div className="col-4 timer"></div>
         <div className="col-4 d-flex justify-content-center">
-          <i
-            className="fas fa-redo"
+          <span
             tabIndex="0"
             onClick={(e) => resetGameBoard(e)}
             onKeyDown={(e) => resetGameBoard(e)}
-          ></i>
+          >
+            <i className="fas fa-redo"></i>
+          </span>
         </div>
         <div className="col-4 d-flex justify-content-end">
           <button
