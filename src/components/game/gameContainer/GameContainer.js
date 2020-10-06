@@ -196,7 +196,7 @@ const GameContainer = ({
   return (
     <div className="container-fluid">
       <div className="row game-container-controls">
-        <div className="col-4 timer"></div>
+        <div className="col-4"></div>
         <div className="col-4 d-flex justify-content-center">
           <span
             tabIndex="0"

@@ -13,13 +13,13 @@
         cursor: pointer;
       }
     }
-    .timer {
-      align-items: center;
-      justify-content: left;
-      display: flex;
-      color: var(--secondaryColor);
-      font-size: 1.5rem;
-    }
+    // .timer {
+    //   align-items: center;
+    //   justify-content: left;
+    //   display: flex;
+    //   color: var(--secondaryColor);
+    //   font-size: 1.5rem;
+    // }
     button {
       font-size: 1.5rem;
       padding: 0.25rem 2rem;
@@ -44,9 +44,9 @@
         color: var(--secondaryColor);
         font-size: 2rem;
       }
-      .timer {
-        font-size: 1rem;
-      }
+      // .timer {
+      //   font-size: 1rem;
+      // }
       button {
         font-size: 1rem;
       }
