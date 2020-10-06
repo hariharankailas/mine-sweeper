@@ -1,0 +1,17 @@
+.main-landing-container {
+  padding: 4% 0;
+  h1 {
+    color: var(--primaryColor);
+    font-size: 3.5rem;
+  }
+}
+
+/* Mobile Style */
+@media (max-width: 767px) {
+  .main-landing-container {
+    padding: 6% 0;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}

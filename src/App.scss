@@ -1,0 +1,15 @@
+:root {
+  --primaryColor: #ffc107;
+  --secondaryColor: #17a2b8;
+  --gameOverColor: #ffff00;
+  --customBackgroundColor: #000000;
+  --primaryFont: "Poppins", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--customBackgroundColor);
+  font-family: var(--primaryFont);
+}

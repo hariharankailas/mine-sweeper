@@ -1,0 +1,10 @@
+.game-cell {
+  height: 4rem;
+  width: 3rem;
+  background-color: var(--primaryColor);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

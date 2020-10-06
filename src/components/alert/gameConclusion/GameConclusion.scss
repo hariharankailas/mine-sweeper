@@ -1,0 +1,63 @@
+.game-conclusion-container {
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  .container-fluid {
+    padding: 3%;
+  }
+  .close-alert-container {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--gameOverColor);
+    font-size: 4rem;
+
+    &:hover {
+      font-size: 4.5rem;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    color: var(--gameOverColor);
+    font-size: 10rem;
+    justify-content: center;
+  }
+  .game-status-icon {
+    color: var(--gameOverColor);
+    font-size: 30rem;
+  }
+
+  .fa-bomb {
+    color: var(--gameOverColor);
+    font-size: 30rem;
+    background-image: url("../../../icons/bomb-solid.svg");
+  }
+  .fa-check-circle {
+    color: var(--gameOverColor);
+    font-size: 30rem;
+    background-image: url("../../../icons/check-circle.svg");
+  }
+}
+
+/* Mobile Style */
+@media (max-width: 767px) {
+  .game-conclusion-container {
+    .close-alert-container {
+      margin-right: 0.5rem;
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 5rem;
+      text-align: center;
+    }
+    .fa-bomb {
+      font-size: 18rem;
+    }
+    .fa-check-circle {
+      font-size: 18rem;
+    }
+  }
+}
