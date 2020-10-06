@@ -36,7 +36,6 @@ const GameLanding = ({
               placeholder="No of Rows"
               aria-label="Rows"
               aria-describedby="rows"
-              value={rowCount}
               onChange={(e) => onInputChange("rows", e.target.value)}
             />
           </div>
@@ -54,7 +53,6 @@ const GameLanding = ({
               placeholder="No of Columns"
               aria-label="Columns"
               aria-describedby="cols"
-              value={colCount}
               onChange={(e) => onInputChange("cols", e.target.value)}
             />
           </div>
@@ -73,8 +71,8 @@ const GameLanding = ({
   );
 };
 GameLanding.propTypes = {
-  colCount: PropTypes.number.isRequired,
-  rowCount: PropTypes.number.isRequired,
+  colCount: PropTypes.string,
+  rowCount: PropTypes.string,
   history: PropTypes.object.isRequired,
   onInputChange: PropTypes.func.isRequired,
   setGameNotificationMsg: PropTypes.func.isRequired,

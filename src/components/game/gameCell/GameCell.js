@@ -13,7 +13,7 @@ const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
     let key = e.which || e.keyCode || "click";
     // Accepts only Click and the enter Key
     const acceptedInputs = [13, "click"];
-    if (acceptedInputs.includes(key) && !isRevealed) {
+    if (acceptedInputs.includes(key) && !isRevealed && !isRevealAll) {
       setIsRevealed(true);
       updateMinefield(cell);
     }

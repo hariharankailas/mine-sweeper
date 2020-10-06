@@ -157,7 +157,6 @@ const GameContainer = ({
   };
 
   const resetGameBoard = (e) => {
-    debugger;
     let key = e.which || e.keyCode || "click";
     // Accepts only Click and the enter Key
     const acceptedInputs = [13, 32, "click"];
@@ -168,6 +167,32 @@ const GameContainer = ({
     }
   };
 
+  const mineTableBody = () => {
+    let mineBody = [];
+    if (gameCellList && gameCellList.length) {
+      mineBody = gameCellList.map((row, rowIndex) => {
+        return (
+          <tr key={rowIndex}>
+            {row.map((col, colIndex) => {
+              let index = colIndex + 1 + rowIndex * rowCount;
+              return (
+                <td key={colIndex}>
+                  <GameCell
+                    cell={col}
+                    index={index}
+                    isRevealAll={isRevealAll}
+                    resetGame={resetGame}
+                    updateMinefield={updateMinefield}
+                  />
+                </td>
+              );
+            })}
+          </tr>
+        );
+      });
+    }
+    return mineBody;
+  };
   return (
     <div className="container-fluid">
       <div className="row game-container-controls">
@@ -193,37 +218,14 @@ const GameContainer = ({
         </div>
       </div>
       <table className="game-container">
-        <tbody>
-          {gameCellList &&
-            gameCellList.length &&
-            gameCellList.map((row, rowIndex) => {
-              return (
-                <tr key={rowIndex}>
-                  {row.map((col, colIndex) => {
-                    let index = colIndex + 1 + rowIndex * rowCount;
-                    return (
-                      <td key={colIndex}>
-                        <GameCell
-                          cell={col}
-                          index={index}
-                          isRevealAll={isRevealAll}
-                          resetGame={resetGame}
-                          updateMinefield={updateMinefield}
-                        />
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-        </tbody>
+        <tbody>{mineTableBody()}</tbody>
       </table>
     </div>
   );
 };
 GameContainer.propTypes = {
-  rowCount: PropTypes.number,
-  colCount: PropTypes.number,
+  rowCount: PropTypes.string,
+  colCount: PropTypes.string,
   setGameStatus: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
