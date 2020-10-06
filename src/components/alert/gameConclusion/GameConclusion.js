@@ -9,7 +9,7 @@ const GameConclusion = ({ gameStatus, setGameStatus }) => {
   const explosion = new UIfx(explosionSound);
   const synth = new UIfx(synthSound);
   useEffect(() => {
-    let main = document.querySelector(".fa-window-close");
+    let main = document.querySelector(".window-close");
     if (main !== undefined && main !== null) {
       main.focus();
     }
@@ -34,6 +34,7 @@ const GameConclusion = ({ gameStatus, setGameStatus }) => {
             onClick={(e) => closeConclusion(e)}
             onKeyDown={(e) => closeConclusion(e)}
             tabIndex="0"
+            className="window-close"
           >
             <i className="fas fa-window-close"></i>
           </span>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import bombIcon from "../../../icons/bomb-solid.svg";
 import "./GameCell.scss";
 
 const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
@@ -26,7 +27,7 @@ const GameCell = ({ cell, isRevealAll, resetGame, updateMinefield }) => {
     >
       {isRevealed || isRevealAll ? (
         cell.cellData === -1 ? (
-          <i className="fas fa-bomb"></i>
+          <img src={bombIcon} alt="Bomb" />
         ) : (
           cell.cellData
         )

@@ -70,65 +70,47 @@ const GameContainer = ({
   /**Update Mine Count on Adjacent Tiles */
   const updateNearbyMineCount = (cellList, rowIndex, colIndex) => {
     // Create Above Row List
+    const prevCol = colIndex - 1;
+    const currCol = colIndex;
+    const nextCol = colIndex + 1;
+    const prevRow = rowIndex - 1;
+    const currRow = rowIndex;
+    const nextRow = rowIndex + 1;
+    const navigateCols = [prevCol, currCol, nextCol];
+    const navigateRows = [prevRow, currRow, nextRow];
+
     let aboveRowList = [];
-    aboveRowList.push(
-      typeof cellList[rowIndex - 1] !== "undefined" &&
-        typeof cellList[rowIndex - 1][colIndex - 1] !== "undefined"
-        ? cellList[rowIndex - 1][colIndex - 1]
-        : null
-    );
-
-    aboveRowList.push(
-      typeof cellList[rowIndex - 1] !== "undefined" &&
-        typeof cellList[rowIndex - 1][colIndex] !== "undefined"
-        ? cellList[rowIndex - 1][colIndex]
-        : null
-    );
-
-    aboveRowList.push(
-      typeof cellList[rowIndex - 1] !== "undefined" &&
-        typeof cellList[rowIndex - 1][colIndex + 1] !== "undefined"
-        ? cellList[rowIndex - 1][colIndex + 1]
-        : null
-    );
+    // Create Above List
+    for (let i = 0; i < 3; i++) {
+      aboveRowList.push(
+        typeof cellList[navigateRows[0]] !== "undefined" &&
+          typeof cellList[navigateRows[0]][navigateCols[i]] !== "undefined"
+          ? cellList[navigateRows[0]][navigateCols[i]]
+          : null
+      );
+    }
     // Create Current Row List
     let currentRowList = [];
-    currentRowList.push(
-      typeof cellList[rowIndex] !== "undefined" &&
-        typeof cellList[rowIndex][colIndex - 1] !== "undefined"
-        ? cellList[rowIndex][colIndex - 1]
-        : null
-    );
+    for (let i = 0; i < 3; i++) {
+      if (i === 1) continue;
+      currentRowList.push(
+        typeof cellList[navigateRows[1]] !== "undefined" &&
+          typeof cellList[navigateRows[1]][navigateCols[i]] !== "undefined"
+          ? cellList[navigateRows[1]][navigateCols[i]]
+          : null
+      );
+    }
 
-    currentRowList.push(
-      typeof cellList[rowIndex] !== "undefined" &&
-        typeof cellList[rowIndex][colIndex + 1] !== "undefined"
-        ? cellList[rowIndex][colIndex + 1]
-        : null
-    );
     // Create Below Row List
     let belowRowList = [];
-    belowRowList.push(
-      typeof cellList[rowIndex + 1] !== "undefined" &&
-        typeof cellList[rowIndex + 1][colIndex - 1] !== "undefined"
-        ? cellList[rowIndex + 1][colIndex - 1]
-        : null
-    );
-
-    belowRowList.push(
-      typeof cellList[rowIndex + 1] !== "undefined" &&
-        typeof cellList[rowIndex + 1][colIndex] !== "undefined"
-        ? cellList[rowIndex + 1][colIndex]
-        : null
-    );
-
-    belowRowList.push(
-      typeof cellList[rowIndex + 1] !== "undefined" &&
-        typeof cellList[rowIndex + 1][colIndex + 1] !== "undefined"
-        ? cellList[rowIndex + 1][colIndex + 1]
-        : null
-    );
-
+    for (let i = 0; i < 3; i++) {
+      belowRowList.push(
+        typeof cellList[navigateRows[2]] !== "undefined" &&
+          typeof cellList[navigateRows[2]][navigateCols[i]] !== "undefined"
+          ? cellList[navigateRows[2]][navigateCols[i]]
+          : null
+      );
+    }
     // Update the cellData by 1 for nearby tiles
     const mergedList = [...aboveRowList, ...currentRowList, ...belowRowList];
     mergedList.forEach((cell) => {
@@ -175,6 +157,7 @@ const GameContainer = ({
   };
 
   const resetGameBoard = (e) => {
+    debugger;
     let key = e.which || e.keyCode || "click";
     // Accepts only Click and the enter Key
     const acceptedInputs = [13, 32, "click"];
@@ -209,7 +192,6 @@ const GameContainer = ({
           </button>
         </div>
       </div>
-
       <table className="game-container">
         <tbody>
           {gameCellList &&
@@ -240,8 +222,8 @@ const GameContainer = ({
   );
 };
 GameContainer.propTypes = {
-  rowCount: PropTypes.number.isRequired,
-  colCount: PropTypes.number.isRequired,
+  rowCount: PropTypes.number,
+  colCount: PropTypes.number,
   setGameStatus: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
