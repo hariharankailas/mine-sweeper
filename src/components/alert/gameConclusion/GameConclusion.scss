@@ -26,18 +26,13 @@
     justify-content: center;
     text-align: center;
   }
-  .game-status-icon {
-    color: var(--gameOverColor);
-    font-size: 30rem;
-  }
-
   .fa-bomb {
     color: var(--gameOverColor);
-    font-size: 30rem;
+    font-size: 24rem;
   }
   .fa-check-circle {
     color: var(--gameOverColor);
-    font-size: 30rem;
+    font-size: 24rem;
   }
 }
 

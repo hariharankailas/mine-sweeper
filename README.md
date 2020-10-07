@@ -14,7 +14,7 @@ Classic Mine Sweeper game reimagined by me.
 
 ### Works Offline
 
-### Accesiblity
+### Accessibility
 
 Can be played using the keyboard and mouse
 
