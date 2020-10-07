@@ -10,6 +10,7 @@ const GameContainer = ({
   rowCount = 5,
   colCount = 5,
   setGameStatus,
+  resetInputValues,
   history,
 }) => {
   const [gameCellList, setGameCellList] = useState([]);
@@ -167,6 +168,11 @@ const GameContainer = ({
     }
   };
 
+  const backToMainPage = () => {
+    resetInputValues();
+    history.push("/");
+  };
+
   const mineTableBody = () => {
     let mineBody = [];
     if (gameCellList && gameCellList.length) {
@@ -210,7 +216,7 @@ const GameContainer = ({
           <button
             className="btn btn-outline-info"
             onClick={() => {
-              history.push("/");
+              backToMainPage();
             }}
           >
             Back
@@ -227,6 +233,7 @@ GameContainer.propTypes = {
   rowCount: PropTypes.string,
   colCount: PropTypes.string,
   setGameStatus: PropTypes.func.isRequired,
+  resetInputValues: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 

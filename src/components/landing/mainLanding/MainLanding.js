@@ -16,6 +16,13 @@ const MainLanding = () => {
   const onInputChange = (type, value) => {
     if (value >= 0) type === "rows" ? setRowCount(value) : setColCount(value);
   };
+
+  /**Reset rows and cols */
+
+  const resetInputValues = () => {
+    setRowCount("");
+    setColCount("");
+  };
   return (
     <Fragment>
       {/* Game Notification Alert */}
@@ -58,6 +65,7 @@ const MainLanding = () => {
                 <GameContainer
                   rowCount={rowCount}
                   colCount={colCount}
+                  resetInputValues={resetInputValues}
                   setGameStatus={setGameStatus}
                 />
               )}
